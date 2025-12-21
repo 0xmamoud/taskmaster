@@ -1,0 +1,20 @@
+{
+  "name": "taskmaster",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --hot ./server/taskmasterd.ts & bun run --hot ./client/taskmasterctl.ts",
+    "dev:server": "bun run --hot ./server/taskmasterd.ts",
+    "dev:client": "bun run --hot ./client/taskmasterctl.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "zod": "^4.2.1"
+  }
+}
