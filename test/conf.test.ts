@@ -90,7 +90,7 @@ describe("parseConfig - Valid configurations", () => {
           exitcodes: [0, 1],
           startretries: 5,
           starttime: 2,
-          stopsignal: "INT",
+          stopsignal: "SIGINT",
           stoptime: 10,
           workingdir: TEST_WORKDIR,
           umask: "027",

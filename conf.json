@@ -27,7 +27,7 @@
       "exitcodes": [0, 2],
       "startretries": 5,
       "starttime": 2,
-      "stopsignal": "INT",
+      "stopsignal": "SIGTERM",
       "stoptime": 5,
       "stdout": "/Users/mamoud/dev/taskmaster/logs/api-stdout.log",
       "stderr": "/Users/mamoud/dev/taskmaster/logs/api-stderr.log",
