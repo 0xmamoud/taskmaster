@@ -10,3 +10,22 @@ export enum RestartPolicy {
   NEVER = "never",
   UNEXPECTED = "unexpected",
 }
+
+export enum ServiceState {
+  STOPPED = "STOPPED",
+  STARTING = "STARTING",
+  RUNNING = "RUNNING",
+  BACKOFF = "BACKOFF",
+  STOPPING = "STOPPING",
+  EXITED = "EXITED",
+  FATAL = "FATAL",
+  UNKNOWN = "UNKNOWN",
+}
+
+export type Command =
+  | { type: "status" }
+  | { type: "start"; service: string }
+  | { type: "stop"; service: string }
+  | { type: "restart"; service: string }
+  | { type: "reload" }
+  | { type: "exit" };
