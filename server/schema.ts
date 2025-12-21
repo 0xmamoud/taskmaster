@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { RestartPolicy } from "./types.js";
+import { RestartPolicy, Signals } from "./types.js";
 
 export const ServiceSchema = z.object({
   cmd: z.string().min(1, "Command cannot be empty"),
@@ -15,7 +15,7 @@ export const ServiceSchema = z.object({
     .min(1, "At least one exit code required"),
   startretries: z.number().int().nonnegative("startretries must be >= 0"),
   starttime: z.number().positive("starttime must be >= 0"),
-  stopsignal: z.string().min(1, "stopsignal cannot be empty"),
+  stopsignal: z.enum(Signals),
   stoptime: z.number().positive("stoptime must be positive"),
   stdout: z.string().nullable().optional(),
   stderr: z.string().nullable().optional(),

@@ -22,6 +22,16 @@ export enum ServiceState {
   UNKNOWN = "UNKNOWN",
 }
 
+export enum Signals {
+  SIGTERM = "SIGTERM",
+  SIGINT = "SIGINT",
+  SIGKILL = "SIGKILL",
+  SIGQUIT = "SIGQUIT",
+  SIGHUP = "SIGHUP",
+  SIGUSR1 = "SIGUSR1",
+  SIGUSR2 = "SIGUSR2",
+}
+
 export type Command =
   | { type: "status" }
   | { type: "start"; service: string }
