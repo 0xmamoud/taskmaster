@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { RestartPolicy } from "./types.js";
 
 export const ServiceSchema = z.object({
   cmd: z.string().min(1, "Command cannot be empty"),
@@ -8,7 +9,7 @@ export const ServiceSchema = z.object({
     .positive("numprocs must be a positive integer")
     .max(100, "numprocs must be <= 100"),
   autostart: z.boolean().default(true),
-  autorestart: z.enum(["always", "never", "unexpected"]),
+  autorestart: z.enum(RestartPolicy),
   exitcodes: z
     .array(z.number().int())
     .min(1, "At least one exit code required"),
