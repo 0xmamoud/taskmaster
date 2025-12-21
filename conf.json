@@ -1,0 +1,43 @@
+{
+  "services": {
+    "web": {
+      "cmd": "bun run web.ts ",
+      "numprocs": 1,
+      "autostart": true,
+      "autorestart": "always",
+      "exitcodes": [0],
+      "startretries": 3,
+      "starttime": 5,
+      "stopsignal": "SIGTERM",
+      "stoptime": 5,
+      "stdout": "/Users/mamoud/dev/taskmaster/logs/web-stdout.log",
+      "stderr": "/Users/mamoud/dev/taskmaster/logs/web-stderr.log",
+      "env": {
+        "PORT": "3000",
+        "NODE_ENV": "development"
+      },
+      "workingdir": "/Users/mamoud/dev/taskmaster/services",
+      "umask": "022"
+    },
+    "api": {
+      "cmd": "bun run api.ts ",
+      "numprocs": 2,
+      "autostart": true,
+      "autorestart": "unexpected",
+      "exitcodes": [0, 2],
+      "startretries": 5,
+      "starttime": 2,
+      "stopsignal": "INT",
+      "stoptime": 5,
+      "stdout": "/Users/mamoud/dev/taskmaster/logs/api-stdout.log",
+      "stderr": "/Users/mamoud/dev/taskmaster/logs/api-stderr.log",
+      "env": {
+        "PORT": "4000",
+        "NODE_ENV": "production",
+        "API_KEY": "secret123"
+      },
+      "workingdir": "/Users/mamoud/dev/taskmaster/services",
+      "umask": "027"
+    }
+  }
+}
