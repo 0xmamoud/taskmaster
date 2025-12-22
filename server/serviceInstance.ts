@@ -45,16 +45,16 @@ export class ServiceInstance {
     });
   }
 
-  async stop(): Promise<void> {
+  async stop(): Promise<number | null> {
     if (
       this.state !== ServiceState.RUNNING &&
       this.state !== ServiceState.STARTING
     ) {
-      return;
+      return null;
     }
 
     if (!this.processId) {
-      return;
+      return null;
     }
 
     this.state = ServiceState.STOPPING;
@@ -66,13 +66,18 @@ export class ServiceInstance {
 
     const result = await Promise.race([stopTimeout, processExited]);
 
+    let exitCode: number;
     if (result === undefined) {
       this.processId.kill("SIGKILL");
-      await this.processId.exited;
+      exitCode = await this.processId.exited;
+    } else {
+      exitCode = result;
     }
 
     this.state = ServiceState.STOPPED;
     this.processId = null;
+
+    return exitCode;
   }
 
   async restart(): Promise<void> {

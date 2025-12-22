@@ -1,5 +1,5 @@
 import { test, expect, describe, beforeEach } from "bun:test";
-import { ServiceInstance } from "@/server/ServiceInstance";
+import { ServiceInstance } from "@/server/serviceInstance";
 import { ServiceState, RestartPolicy } from "@/server/types";
 import type { Service } from "@/server/types";
 import { tmpdir } from "os";
@@ -43,7 +43,7 @@ describe("ServiceInstance - Basic lifecycle", () => {
 
   test("should successfully start a process", async () => {
     const config = createServiceConfig({
-      cmd: "sleep 10",
+      cmd: "exec sleep 10",
       starttime: 1,
     });
     const instance = new ServiceInstance("test", 0, config);
@@ -70,17 +70,18 @@ describe("ServiceInstance - Basic lifecycle", () => {
 
   test("should stop a running process", async () => {
     const config = createServiceConfig({
-      cmd: "sleep 10",
+      cmd: "exec sh -c 'while true; do echo test; done'",
       starttime: 1,
-      stoptime: 2,
+      stoptime: 5,
     });
     const instance = new ServiceInstance("test", 0, config);
 
     await instance.start();
     expect(instance.getState()).toBe(ServiceState.RUNNING);
 
-    await instance.stop();
+    const exitCode = await instance.stop();
     expect(instance.getState()).toBe(ServiceState.STOPPED);
+    expect(exitCode).toBe(143); // 128 + 15 (SIGTERM)
   });
 
   test("should force kill with SIGKILL if process doesn't stop", async () => {
@@ -94,13 +95,14 @@ describe("ServiceInstance - Basic lifecycle", () => {
     await instance.start();
     expect(instance.getState()).toBe(ServiceState.RUNNING);
 
-    await instance.stop();
+    const exitCode = await instance.stop();
     expect(instance.getState()).toBe(ServiceState.STOPPED);
+    expect(exitCode).toBe(137); // 128 + 9 (SIGKILL)
   });
 
   test("should restart a process", async () => {
     const config = createServiceConfig({
-      cmd: "sleep 10",
+      cmd: "exec sleep 10",
       starttime: 1,
     });
     const instance = new ServiceInstance("test", 0, config);
@@ -236,7 +238,7 @@ describe("ServiceInstance - Autorestart UNEXPECTED", () => {
 describe("ServiceInstance - Edge cases", () => {
   test("should not start if already running", async () => {
     const config = createServiceConfig({
-      cmd: "sleep 10",
+      cmd: "exec sleep 10",
       starttime: 1,
     });
     const instance = new ServiceInstance("test", 0, config);
