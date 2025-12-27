@@ -1,7 +1,7 @@
 {
   "services": {
     "web": {
-      "cmd": "bun run web.ts ",
+      "cmd": "/Users/mamoud/.bun/bin/bun run web.ts",
       "numprocs": 1,
       "autostart": true,
       "autorestart": "always",
@@ -20,8 +20,8 @@
       "umask": "022"
     },
     "api": {
-      "cmd": "bun run api.ts ",
-      "numprocs": 2,
+      "cmd": "/Users/mamoud/.bun/bin/bun run api.ts",
+      "numprocs": 1,
       "autostart": true,
       "autorestart": "unexpected",
       "exitcodes": [0, 2],
