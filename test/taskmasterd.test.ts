@@ -38,7 +38,7 @@ function createTestConfig() {
 async function sendCommand(
   ws: WebSocket,
   cmd: object
-): Promise<{ success: boolean; data?: unknown; error?: string }> {
+): Promise<{ success: boolean; type?: string; data?: unknown; error?: string }> {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => reject(new Error("Timeout")), 5000);
 
@@ -115,6 +115,7 @@ describe("taskmasterd WebSocket communication", () => {
     const response = await sendCommand(ws!, { type: "status" });
 
     expect(response.success).toBe(true);
+    expect(response.type).toBe("status");
     expect(typeof response.data).toBe("string");
   });
 
@@ -125,6 +126,7 @@ describe("taskmasterd WebSocket communication", () => {
     });
 
     expect(response.success).toBe(true);
+    expect(response.type).toBe("start");
     expect(response.data).toHaveProperty("name");
     expect(response.data).toHaveProperty("instances");
   });
@@ -146,6 +148,7 @@ describe("taskmasterd WebSocket communication", () => {
     });
 
     expect(response.success).toBe(true);
+    expect(response.type).toBe("stop");
   });
 
   test("stop command returns error for unknown service", async () => {
@@ -165,6 +168,7 @@ describe("taskmasterd WebSocket communication", () => {
     });
 
     expect(response.success).toBe(true);
+    expect(response.type).toBe("restart");
     expect(response.data).toHaveProperty("name");
     expect(response.data).toHaveProperty("instances");
   });
@@ -183,6 +187,7 @@ describe("taskmasterd WebSocket communication", () => {
     const response = await sendCommand(ws!, { type: "reload" });
 
     expect(response.success).toBe(true);
+    expect(response.type).toBe("reload");
     expect(response.data).toHaveProperty("removed");
     expect(response.data).toHaveProperty("modified");
     expect(response.data).toHaveProperty("added");

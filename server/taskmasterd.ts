@@ -5,8 +5,12 @@ import type { ServerWebSocket } from "bun";
 
 const CONFIG_PATH = process.env.CONFIG_PATH || "./conf.json";
 
-function sendSuccess(ws: ServerWebSocket<unknown>, data: unknown): void {
-  ws.send(JSON.stringify({ success: true, data }));
+function sendSuccess(
+  ws: ServerWebSocket<unknown>,
+  type: Command["type"],
+  data: unknown
+): void {
+  ws.send(JSON.stringify({ success: true, type, data }));
 }
 
 function sendError(ws: ServerWebSocket<unknown>, error: string): void {
@@ -36,7 +40,7 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
             switch (cmd.type) {
               case "status": {
                 const states = supervisor.getStates();
-                sendSuccess(ws, states);
+                sendSuccess(ws, "status", states);
                 break;
               }
 
@@ -46,7 +50,7 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
                   sendError(ws, `Service '${cmd.service}' not found`);
                   return;
                 }
-                sendSuccess(ws, result);
+                sendSuccess(ws, "start", result);
                 break;
               }
 
@@ -56,7 +60,7 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
                   sendError(ws, `Service '${cmd.service}' not found`);
                   return;
                 }
-                sendSuccess(ws, result);
+                sendSuccess(ws, "stop", result);
                 break;
               }
 
@@ -66,7 +70,7 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
                   sendError(ws, `Service '${cmd.service}' not found`);
                   return;
                 }
-                sendSuccess(ws, result);
+                sendSuccess(ws, "restart", result);
                 break;
               }
 
@@ -74,7 +78,7 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
                 try {
                   const newConfig = parseConfig(CONFIG_PATH);
                   const changes = await supervisor.reloadConfig(newConfig);
-                  sendSuccess(ws, changes);
+                  sendSuccess(ws, "reload", changes);
                 } catch (error) {
                   const errorMessage =
                     error instanceof Error ? error.message : String(error);
@@ -85,7 +89,7 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
 
               case "exit": {
                 await supervisor.exit();
-                sendSuccess(ws, "Server shutting down");
+                sendSuccess(ws, "exit", "Server shutting down");
                 ws.close();
                 process.exit(0);
               }

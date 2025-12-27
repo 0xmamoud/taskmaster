@@ -38,6 +38,46 @@
       },
       "workingdir": "/Users/mamoud/dev/taskmaster/services",
       "umask": "027"
+    },
+    "bash": {
+      "cmd": "while true; do sleep 1; done",
+      "numprocs": 5,
+      "autostart": true,
+      "autorestart": "unexpected",
+      "exitcodes": [0, 2],
+      "startretries": 5,
+      "starttime": 2,
+      "stopsignal": "SIGTERM",
+      "stoptime": 5,
+      "stdout": "/Users/mamoud/dev/taskmaster/logs/bash-stdout.log",
+      "stderr": "/Users/mamoud/dev/taskmaster/logs/bash-stderr.log",
+      "env": {
+        "PORT": "4000",
+        "NODE_ENV": "production",
+        "API_KEY": "secret123"
+      },
+      "workingdir": "/Users/mamoud/dev/taskmaster/services",
+      "umask": "027"
+    },
+    "bash2": {
+      "cmd": "echo 'Hello, World!' && sleep 5 && exit -1",
+      "numprocs": 5,
+      "autostart": true,
+      "autorestart": "unexpected",
+      "exitcodes": [0, 2],
+      "startretries": 5,
+      "starttime": 2,
+      "stopsignal": "SIGTERM",
+      "stoptime": 5,
+      "stdout": "/Users/mamoud/dev/taskmaster/logs/bash-stdout.log",
+      "stderr": "/Users/mamoud/dev/taskmaster/logs/bash-stderr.log",
+      "env": {
+        "PORT": "4000",
+        "NODE_ENV": "production",
+        "API_KEY": "secret123"
+      },
+      "workingdir": "/Users/mamoud/dev/taskmaster/services",
+      "umask": "027"
     }
   }
 }

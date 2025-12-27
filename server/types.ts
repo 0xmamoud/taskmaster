@@ -69,3 +69,23 @@ export type Command =
   | { type: "restart"; service: string }
   | { type: "reload" }
   | { type: "exit" };
+
+export type SuccessResponse =
+  | { success: true; type: "status"; data: string }
+  | { success: true; type: "start"; data: { name: string; instances: number } }
+  | { success: true; type: "stop"; data: string }
+  | {
+      success: true;
+      type: "restart";
+      data: { name: string; instances: number };
+    }
+  | {
+      success: true;
+      type: "reload";
+      data: { removed: string[]; modified: string[]; added: string[] };
+    }
+  | { success: true; type: "exit"; data: string };
+
+export type ErrorResponse = { success: false; error: string };
+
+export type Response = SuccessResponse | ErrorResponse;
