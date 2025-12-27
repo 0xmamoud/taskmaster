@@ -28,9 +28,13 @@ export class ServiceInstance {
     this.state = ServiceState.STARTING;
     logger.info(this.id, `Starting process: ${this.config.cmd}`);
 
-    this.processId = Bun.spawn(["sh", "-c", this.config.cmd], {
+    const cmd = `umask ${this.config.umask} && ${this.config.cmd}`;
+
+    this.processId = Bun.spawn(["sh", "-c", cmd], {
       cwd: this.config.workingdir,
       env: this.config.env,
+      stdout: this.config.stdout ? Bun.file(this.config.stdout) : "ignore",
+      stderr: this.config.stderr ? Bun.file(this.config.stderr) : "ignore",
     });
 
     const startTimeout = Bun.sleep(this.config.starttime * 1000);
@@ -118,10 +122,16 @@ export class ServiceInstance {
       this.retryCount++;
       if (this.retryCount > this.config.startretries) {
         this.state = ServiceState.FATAL;
-        logger.error(this.id, `Fatal: exceeded max retries (${this.config.startretries})`);
+        logger.error(
+          this.id,
+          `Fatal: exceeded max retries (${this.config.startretries})`
+        );
       } else {
         this.state = ServiceState.BACKOFF;
-        logger.info(this.id, `Restarting (attempt ${this.retryCount}/${this.config.startretries})`);
+        logger.info(
+          this.id,
+          `Restarting (attempt ${this.retryCount}/${this.config.startretries})`
+        );
         setTimeout(() => this.start(), 100);
       }
     } else {

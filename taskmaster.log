@@ -214,3 +214,165 @@
 [2025-12-27T18:51:40.925Z] [INFO] [testservice#1] Process started successfully
 [2025-12-27T18:51:40.929Z] [INFO] [supervisor] Reloading configuration
 [2025-12-27T18:51:40.930Z] [INFO] [supervisor] Config changes: removed=[] modified=[] added=[]
+[2025-12-27T18:57:51.154Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:57:52.162Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:57:52.163Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:57:52.174Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:57:52.175Z] [INFO] [test#0] Restarting (attempt 1/3)
+[2025-12-27T18:57:52.175Z] [INFO] [test#0] Starting process: exec sh -c 'while true; do echo test; done'
+[2025-12-27T18:57:52.276Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:57:52.281Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:57:52.281Z] [INFO] [test#0] Restarting (attempt 2/3)
+[2025-12-27T18:57:52.383Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:57:52.394Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:57:52.394Z] [INFO] [test#0] Restarting (attempt 3/3)
+[2025-12-27T18:57:52.495Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:57:52.500Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:57:52.500Z] [ERROR] [test#0] Fatal: exceeded max retries (3)
+[2025-12-27T18:57:53.177Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:57:53.178Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:57:53.178Z] [INFO] [test#0] Stopped with exit code 143
+[2025-12-27T18:57:53.178Z] [INFO] [test#0] Starting process: trap '' SIGTERM; sleep 100
+[2025-12-27T18:57:54.180Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:57:54.181Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:57:55.185Z] [WARN] [test#0] Stop timeout, sending SIGKILL
+[2025-12-27T18:57:55.187Z] [INFO] [test#0] Stopped with exit code 137
+[2025-12-27T18:57:55.188Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:57:56.191Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:57:56.192Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:57:56.192Z] [INFO] [test#0] Stopped with exit code 143
+[2025-12-27T18:57:56.192Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:57:57.195Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:57:57.196Z] [INFO] [test#0] Starting process: exit 0
+[2025-12-27T18:57:57.209Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:57:59.213Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:58:00.218Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:00.738Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:00.738Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:58:00.840Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:58:01.166Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:01.221Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:01.230Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:01.230Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:58:01.331Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:01.344Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:01.345Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:58:01.446Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:01.459Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:01.459Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:58:01.843Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:02.231Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:58:02.357Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:02.357Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:58:02.458Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:58:03.234Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:03.460Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:03.752Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:03.752Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:58:03.854Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:58:03.974Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:03.975Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:58:04.236Z] [INFO] [test#0] Starting process: exit 0
+[2025-12-27T18:58:04.247Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:04.856Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:05.376Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:05.377Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:58:05.479Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:58:06.210Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:06.250Z] [INFO] [test#0] Starting process: exit 2
+[2025-12-27T18:58:06.261Z] [WARN] [test#0] Died unexpectedly with exit code 2
+[2025-12-27T18:58:06.481Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:06.999Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:06.999Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:58:08.263Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:58:09.267Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:09.279Z] [INFO] [supervisor] Starting 0 services
+[2025-12-27T18:58:09.303Z] [INFO] [testservice#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:58:10.307Z] [INFO] [testservice#1] Process started successfully
+[2025-12-27T18:58:10.309Z] [INFO] [testservice#1] Stopping with signal SIGTERM
+[2025-12-27T18:58:10.310Z] [INFO] [testservice#1] Stopped with exit code 143
+[2025-12-27T18:58:10.311Z] [INFO] [testservice#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:58:11.314Z] [INFO] [testservice#1] Process started successfully
+[2025-12-27T18:58:11.320Z] [INFO] [supervisor] Reloading configuration
+[2025-12-27T18:58:11.320Z] [INFO] [supervisor] Config changes: removed=[] modified=[] added=[]
+[2025-12-27T18:58:40.942Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:58:41.949Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:41.951Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:41.963Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:41.963Z] [INFO] [test#0] Restarting (attempt 1/3)
+[2025-12-27T18:58:41.964Z] [INFO] [test#0] Starting process: exec sh -c 'while true; do echo test; done'
+[2025-12-27T18:58:42.065Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:42.070Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:42.070Z] [INFO] [test#0] Restarting (attempt 2/3)
+[2025-12-27T18:58:42.171Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:42.175Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:42.175Z] [INFO] [test#0] Restarting (attempt 3/3)
+[2025-12-27T18:58:42.277Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:42.281Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:42.281Z] [ERROR] [test#0] Fatal: exceeded max retries (3)
+[2025-12-27T18:58:42.966Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:42.967Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:58:42.967Z] [INFO] [test#0] Stopped with exit code 143
+[2025-12-27T18:58:42.968Z] [INFO] [test#0] Starting process: trap '' SIGTERM; sleep 100
+[2025-12-27T18:58:43.970Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:43.970Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:58:44.973Z] [WARN] [test#0] Stop timeout, sending SIGKILL
+[2025-12-27T18:58:44.975Z] [INFO] [test#0] Stopped with exit code 137
+[2025-12-27T18:58:44.976Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:58:45.980Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:45.981Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:58:45.982Z] [INFO] [test#0] Stopped with exit code 143
+[2025-12-27T18:58:45.982Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:58:46.986Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:46.988Z] [INFO] [test#0] Starting process: exit 0
+[2025-12-27T18:58:47.001Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:49.005Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:58:50.008Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:50.530Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:50.531Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:58:50.632Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:58:50.958Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:51.010Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:51.023Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:51.023Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:58:51.123Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:51.141Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:51.141Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:58:51.242Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:58:51.258Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:51.258Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:58:51.635Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:52.025Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:58:52.154Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:52.155Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:58:52.256Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:58:53.030Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:53.259Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:53.550Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:53.550Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:58:53.652Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:58:53.780Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:53.780Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:58:54.033Z] [INFO] [test#0] Starting process: exit 0
+[2025-12-27T18:58:54.046Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:54.655Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:55.181Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:55.181Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:58:55.284Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:58:56.003Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:58:56.051Z] [INFO] [test#0] Starting process: exit 2
+[2025-12-27T18:58:56.062Z] [WARN] [test#0] Died unexpectedly with exit code 2
+[2025-12-27T18:58:56.287Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:56.807Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:58:56.807Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:58:58.064Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:58:59.068Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:58:59.081Z] [INFO] [supervisor] Starting 0 services
+[2025-12-27T18:58:59.105Z] [INFO] [testservice#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:59:00.109Z] [INFO] [testservice#1] Process started successfully
+[2025-12-27T18:59:00.112Z] [INFO] [testservice#1] Stopping with signal SIGTERM
+[2025-12-27T18:59:00.113Z] [INFO] [testservice#1] Stopped with exit code 143
+[2025-12-27T18:59:00.114Z] [INFO] [testservice#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:59:01.116Z] [INFO] [testservice#1] Process started successfully
+[2025-12-27T18:59:01.119Z] [INFO] [supervisor] Reloading configuration
+[2025-12-27T18:59:01.119Z] [INFO] [supervisor] Config changes: removed=[] modified=[] added=[]
