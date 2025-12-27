@@ -8,7 +8,7 @@
     "dev:server": "bun run --hot ./server/taskmasterd.ts",
     "dev:client": "bun run --hot ./client/taskmasterctl.ts",
     "sighup": "kill -SIGHUP $(pgrep -f taskmasterd.ts)",
-    "sigkill": "kill -SIGKILL $(pgrep -f taskmasterd.ts)"
+    "sigint": "kill -SIGINT $(pgrep -f taskmasterd.ts)"
   },
   "devDependencies": {
     "@types/bun": "latest"
