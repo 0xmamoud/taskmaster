@@ -142,5 +142,8 @@ export class Supervisor {
     );
   }
 
-  exit(): void {}
+  async exit(): Promise<void> {
+    const allServiceNames = Array.from(this.serviceGroups.keys());
+    await this.stopServices(allServiceNames);
+  }
 }
