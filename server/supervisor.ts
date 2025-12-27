@@ -1,5 +1,6 @@
 import type { Service, Config } from "./types";
 import { ServiceGroup } from "./serviceGroup.js";
+import { logger } from "./logger";
 export class Supervisor {
   private readonly serviceGroups: Map<string, ServiceGroup> = new Map();
   private config: Config;
@@ -12,13 +13,14 @@ export class Supervisor {
     }
   }
 
-  // Start all services with autostart = true
   async start(): Promise<void> {
-    const autoStartPromises = Array.from(this.serviceGroups.entries())
-      .filter(([_, group]) => group.config.autostart)
-      .map(([_, group]) => group.start());
+    const autoStartServices = Array.from(this.serviceGroups.entries()).filter(
+      ([_, group]) => group.config.autostart
+    );
 
-    await Promise.all(autoStartPromises);
+    logger.info("supervisor", `Starting ${autoStartServices.length} services`);
+
+    await Promise.all(autoStartServices.map(([_, group]) => group.start()));
   }
 
   getStates(): string {
@@ -71,12 +73,21 @@ export class Supervisor {
     modified: string[];
     added: string[];
   }> {
+    logger.info("supervisor", "Reloading configuration");
+
     const oldServices = this.config.services;
     const newServices = newConfig.services;
 
     const { removed, modified, added } = this.identifyChanges(
       oldServices,
       newServices
+    );
+
+    logger.info(
+      "supervisor",
+      `Config changes: removed=[${removed.join(
+        ", "
+      )}] modified=[${modified.join(", ")}] added=[${added.join(", ")}]`
     );
 
     this.config = newConfig;
@@ -143,7 +154,9 @@ export class Supervisor {
   }
 
   async exit(): Promise<void> {
+    logger.info("supervisor", "Shutting down");
     const allServiceNames = Array.from(this.serviceGroups.keys());
     await this.stopServices(allServiceNames);
+    logger.info("supervisor", "All services stopped");
   }
 }

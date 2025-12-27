@@ -1,0 +1,216 @@
+[2025-12-27T18:49:22.761Z] [INFO] [supervisor] Starting 4 services
+[2025-12-27T18:49:22.762Z] [INFO] [web#1] Starting process: /Users/mamoud/.bun/bin/bun run web.ts
+[2025-12-27T18:49:22.767Z] [INFO] [api#1] Starting process: /Users/mamoud/.bun/bin/bun run api.ts
+[2025-12-27T18:49:22.767Z] [INFO] [bash#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:49:22.768Z] [INFO] [bash#2] Starting process: while true; do sleep 1; done
+[2025-12-27T18:49:22.768Z] [INFO] [bash#3] Starting process: while true; do sleep 1; done
+[2025-12-27T18:49:22.769Z] [INFO] [bash#4] Starting process: while true; do sleep 1; done
+[2025-12-27T18:49:22.770Z] [INFO] [bash#5] Starting process: while true; do sleep 1; done
+[2025-12-27T18:49:22.771Z] [INFO] [bash2#1] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:22.772Z] [INFO] [bash2#2] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:22.773Z] [INFO] [bash2#3] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:22.775Z] [INFO] [bash2#4] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:22.776Z] [INFO] [bash2#5] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:24.771Z] [INFO] [api#1] Process started successfully
+[2025-12-27T18:49:24.772Z] [INFO] [bash#1] Process started successfully
+[2025-12-27T18:49:24.772Z] [INFO] [bash#2] Process started successfully
+[2025-12-27T18:49:24.772Z] [INFO] [bash#3] Process started successfully
+[2025-12-27T18:49:24.772Z] [INFO] [bash#4] Process started successfully
+[2025-12-27T18:49:24.772Z] [INFO] [bash#5] Process started successfully
+[2025-12-27T18:49:24.773Z] [INFO] [bash2#1] Process started successfully
+[2025-12-27T18:49:24.773Z] [INFO] [bash2#2] Process started successfully
+[2025-12-27T18:49:24.775Z] [INFO] [bash2#3] Process started successfully
+[2025-12-27T18:49:24.776Z] [INFO] [bash2#4] Process started successfully
+[2025-12-27T18:49:24.777Z] [INFO] [bash2#5] Process started successfully
+[2025-12-27T18:49:27.768Z] [INFO] [web#1] Process started successfully
+[2025-12-27T18:49:27.792Z] [WARN] [bash2#1] Died unexpectedly with exit code 255
+[2025-12-27T18:49:27.793Z] [INFO] [bash2#1] Restarting (attempt 1/5)
+[2025-12-27T18:49:27.793Z] [WARN] [bash2#3] Died unexpectedly with exit code 255
+[2025-12-27T18:49:27.794Z] [INFO] [bash2#3] Restarting (attempt 1/5)
+[2025-12-27T18:49:27.794Z] [WARN] [bash2#4] Died unexpectedly with exit code 255
+[2025-12-27T18:49:27.794Z] [INFO] [bash2#4] Restarting (attempt 1/5)
+[2025-12-27T18:49:27.795Z] [WARN] [bash2#5] Died unexpectedly with exit code 255
+[2025-12-27T18:49:27.795Z] [INFO] [bash2#5] Restarting (attempt 1/5)
+[2025-12-27T18:49:27.795Z] [WARN] [bash2#2] Died unexpectedly with exit code 255
+[2025-12-27T18:49:27.796Z] [INFO] [bash2#2] Restarting (attempt 1/5)
+[2025-12-27T18:49:27.902Z] [INFO] [bash2#1] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:27.908Z] [INFO] [bash2#3] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:27.909Z] [INFO] [bash2#4] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:27.911Z] [INFO] [bash2#5] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:27.912Z] [INFO] [bash2#2] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:29.914Z] [INFO] [bash2#1] Process started successfully
+[2025-12-27T18:49:29.915Z] [INFO] [bash2#3] Process started successfully
+[2025-12-27T18:49:29.916Z] [INFO] [bash2#4] Process started successfully
+[2025-12-27T18:49:29.916Z] [INFO] [bash2#5] Process started successfully
+[2025-12-27T18:49:29.916Z] [INFO] [bash2#2] Process started successfully
+[2025-12-27T18:49:32.956Z] [WARN] [bash2#2] Died unexpectedly with exit code 255
+[2025-12-27T18:49:32.956Z] [INFO] [bash2#2] Restarting (attempt 2/5)
+[2025-12-27T18:49:32.957Z] [WARN] [bash2#4] Died unexpectedly with exit code 255
+[2025-12-27T18:49:32.957Z] [INFO] [bash2#4] Restarting (attempt 2/5)
+[2025-12-27T18:49:32.957Z] [WARN] [bash2#3] Died unexpectedly with exit code 255
+[2025-12-27T18:49:32.957Z] [INFO] [bash2#3] Restarting (attempt 2/5)
+[2025-12-27T18:49:32.957Z] [WARN] [bash2#1] Died unexpectedly with exit code 255
+[2025-12-27T18:49:32.957Z] [INFO] [bash2#1] Restarting (attempt 2/5)
+[2025-12-27T18:49:32.957Z] [WARN] [bash2#5] Died unexpectedly with exit code 255
+[2025-12-27T18:49:32.957Z] [INFO] [bash2#5] Restarting (attempt 2/5)
+[2025-12-27T18:49:33.059Z] [INFO] [bash2#2] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:33.060Z] [INFO] [bash2#4] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:33.061Z] [INFO] [bash2#3] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:33.062Z] [INFO] [bash2#1] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:33.062Z] [INFO] [bash2#5] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:35.061Z] [INFO] [bash2#2] Process started successfully
+[2025-12-27T18:49:35.062Z] [INFO] [bash2#4] Process started successfully
+[2025-12-27T18:49:35.062Z] [INFO] [bash2#3] Process started successfully
+[2025-12-27T18:49:35.062Z] [INFO] [bash2#1] Process started successfully
+[2025-12-27T18:49:35.063Z] [INFO] [bash2#5] Process started successfully
+[2025-12-27T18:49:38.080Z] [WARN] [bash2#1] Died unexpectedly with exit code 255
+[2025-12-27T18:49:38.081Z] [INFO] [bash2#1] Restarting (attempt 3/5)
+[2025-12-27T18:49:38.081Z] [WARN] [bash2#3] Died unexpectedly with exit code 255
+[2025-12-27T18:49:38.081Z] [INFO] [bash2#3] Restarting (attempt 3/5)
+[2025-12-27T18:49:38.083Z] [WARN] [bash2#5] Died unexpectedly with exit code 255
+[2025-12-27T18:49:38.083Z] [INFO] [bash2#5] Restarting (attempt 3/5)
+[2025-12-27T18:49:38.083Z] [WARN] [bash2#4] Died unexpectedly with exit code 255
+[2025-12-27T18:49:38.083Z] [INFO] [bash2#4] Restarting (attempt 3/5)
+[2025-12-27T18:49:38.084Z] [WARN] [bash2#2] Died unexpectedly with exit code 255
+[2025-12-27T18:49:38.084Z] [INFO] [bash2#2] Restarting (attempt 3/5)
+[2025-12-27T18:49:38.183Z] [INFO] [bash2#1] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:38.184Z] [INFO] [bash2#3] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:38.185Z] [INFO] [bash2#5] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:38.186Z] [INFO] [bash2#4] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:38.187Z] [INFO] [bash2#2] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:40.186Z] [INFO] [bash2#1] Process started successfully
+[2025-12-27T18:49:40.187Z] [INFO] [bash2#3] Process started successfully
+[2025-12-27T18:49:40.187Z] [INFO] [bash2#5] Process started successfully
+[2025-12-27T18:49:40.188Z] [INFO] [bash2#4] Process started successfully
+[2025-12-27T18:49:40.188Z] [INFO] [bash2#2] Process started successfully
+[2025-12-27T18:49:43.204Z] [WARN] [bash2#1] Died unexpectedly with exit code 255
+[2025-12-27T18:49:43.205Z] [INFO] [bash2#1] Restarting (attempt 4/5)
+[2025-12-27T18:49:43.205Z] [WARN] [bash2#2] Died unexpectedly with exit code 255
+[2025-12-27T18:49:43.205Z] [INFO] [bash2#2] Restarting (attempt 4/5)
+[2025-12-27T18:49:43.205Z] [WARN] [bash2#5] Died unexpectedly with exit code 255
+[2025-12-27T18:49:43.205Z] [INFO] [bash2#5] Restarting (attempt 4/5)
+[2025-12-27T18:49:43.205Z] [WARN] [bash2#4] Died unexpectedly with exit code 255
+[2025-12-27T18:49:43.205Z] [INFO] [bash2#4] Restarting (attempt 4/5)
+[2025-12-27T18:49:43.205Z] [WARN] [bash2#3] Died unexpectedly with exit code 255
+[2025-12-27T18:49:43.205Z] [INFO] [bash2#3] Restarting (attempt 4/5)
+[2025-12-27T18:49:43.307Z] [INFO] [bash2#1] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:43.308Z] [INFO] [bash2#2] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:43.309Z] [INFO] [bash2#5] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:43.309Z] [INFO] [bash2#4] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:43.310Z] [INFO] [bash2#3] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:45.309Z] [INFO] [bash2#1] Process started successfully
+[2025-12-27T18:49:45.310Z] [INFO] [bash2#2] Process started successfully
+[2025-12-27T18:49:45.310Z] [INFO] [bash2#5] Process started successfully
+[2025-12-27T18:49:45.310Z] [INFO] [bash2#4] Process started successfully
+[2025-12-27T18:49:45.311Z] [INFO] [bash2#3] Process started successfully
+[2025-12-27T18:49:48.328Z] [WARN] [bash2#1] Died unexpectedly with exit code 255
+[2025-12-27T18:49:48.328Z] [INFO] [bash2#1] Restarting (attempt 5/5)
+[2025-12-27T18:49:48.328Z] [WARN] [bash2#2] Died unexpectedly with exit code 255
+[2025-12-27T18:49:48.328Z] [INFO] [bash2#2] Restarting (attempt 5/5)
+[2025-12-27T18:49:48.330Z] [WARN] [bash2#5] Died unexpectedly with exit code 255
+[2025-12-27T18:49:48.330Z] [INFO] [bash2#5] Restarting (attempt 5/5)
+[2025-12-27T18:49:48.330Z] [WARN] [bash2#3] Died unexpectedly with exit code 255
+[2025-12-27T18:49:48.330Z] [INFO] [bash2#3] Restarting (attempt 5/5)
+[2025-12-27T18:49:48.330Z] [WARN] [bash2#4] Died unexpectedly with exit code 255
+[2025-12-27T18:49:48.330Z] [INFO] [bash2#4] Restarting (attempt 5/5)
+[2025-12-27T18:49:48.430Z] [INFO] [bash2#1] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:48.431Z] [INFO] [bash2#2] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:48.431Z] [INFO] [bash2#5] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:48.432Z] [INFO] [bash2#3] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:48.432Z] [INFO] [bash2#4] Starting process: echo 'Hello, World!' && sleep 5 && exit -1
+[2025-12-27T18:49:50.432Z] [INFO] [bash2#1] Process started successfully
+[2025-12-27T18:49:50.432Z] [INFO] [bash2#2] Process started successfully
+[2025-12-27T18:49:50.432Z] [INFO] [bash2#5] Process started successfully
+[2025-12-27T18:49:50.432Z] [INFO] [bash2#3] Process started successfully
+[2025-12-27T18:49:50.435Z] [INFO] [bash2#4] Process started successfully
+[2025-12-27T18:49:53.453Z] [WARN] [bash2#2] Died unexpectedly with exit code 255
+[2025-12-27T18:49:53.453Z] [ERROR] [bash2#2] Fatal: exceeded max retries (5)
+[2025-12-27T18:49:53.454Z] [WARN] [bash2#3] Died unexpectedly with exit code 255
+[2025-12-27T18:49:53.454Z] [ERROR] [bash2#3] Fatal: exceeded max retries (5)
+[2025-12-27T18:49:53.454Z] [WARN] [bash2#4] Died unexpectedly with exit code 255
+[2025-12-27T18:49:53.454Z] [ERROR] [bash2#4] Fatal: exceeded max retries (5)
+[2025-12-27T18:49:53.454Z] [WARN] [bash2#5] Died unexpectedly with exit code 255
+[2025-12-27T18:49:53.454Z] [ERROR] [bash2#5] Fatal: exceeded max retries (5)
+[2025-12-27T18:49:53.454Z] [WARN] [bash2#1] Died unexpectedly with exit code 255
+[2025-12-27T18:49:53.454Z] [ERROR] [bash2#1] Fatal: exceeded max retries (5)
+[2025-12-27T18:51:20.777Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:51:21.782Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:21.784Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:21.792Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:21.792Z] [INFO] [test#0] Restarting (attempt 1/3)
+[2025-12-27T18:51:21.793Z] [INFO] [test#0] Starting process: exec sh -c 'while true; do echo test; done'
+[2025-12-27T18:51:21.893Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:21.898Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:21.898Z] [INFO] [test#0] Restarting (attempt 2/3)
+[2025-12-27T18:51:21.998Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:22.002Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:22.002Z] [INFO] [test#0] Restarting (attempt 3/3)
+[2025-12-27T18:51:22.102Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:22.107Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:22.107Z] [ERROR] [test#0] Fatal: exceeded max retries (3)
+[2025-12-27T18:51:22.793Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:22.794Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:51:22.794Z] [INFO] [test#0] Stopped with exit code 143
+[2025-12-27T18:51:22.794Z] [INFO] [test#0] Starting process: trap '' SIGTERM; sleep 100
+[2025-12-27T18:51:23.797Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:23.797Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:51:24.800Z] [WARN] [test#0] Stop timeout, sending SIGKILL
+[2025-12-27T18:51:24.801Z] [INFO] [test#0] Stopped with exit code 137
+[2025-12-27T18:51:24.802Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:51:25.804Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:25.805Z] [INFO] [test#0] Stopping with signal SIGTERM
+[2025-12-27T18:51:25.805Z] [INFO] [test#0] Stopped with exit code 143
+[2025-12-27T18:51:25.805Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:51:26.808Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:26.809Z] [INFO] [test#0] Starting process: exit 0
+[2025-12-27T18:51:26.817Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:28.820Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:51:29.821Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:30.335Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:30.335Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:51:30.437Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:51:30.793Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:30.824Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:30.835Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:30.835Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:51:30.936Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:30.947Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:30.948Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:51:31.049Z] [INFO] [test#0] Starting process: exit 1
+[2025-12-27T18:51:31.057Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:31.057Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:51:31.438Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:31.837Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:51:31.949Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:31.949Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:51:32.050Z] [INFO] [test#0] Starting process: sleep 1.5; exit 0
+[2025-12-27T18:51:32.840Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:33.053Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:33.355Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:33.355Z] [INFO] [test#0] Restarting (attempt 1/2)
+[2025-12-27T18:51:33.456Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:51:33.574Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:33.574Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:51:33.843Z] [INFO] [test#0] Starting process: exit 0
+[2025-12-27T18:51:33.855Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:34.459Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:34.981Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:34.982Z] [INFO] [test#0] Restarting (attempt 2/2)
+[2025-12-27T18:51:35.084Z] [INFO] [test#0] Starting process: sleep 1.5; exit 1
+[2025-12-27T18:51:35.824Z] [WARN] [test#0] Died unexpectedly with exit code 0
+[2025-12-27T18:51:35.857Z] [INFO] [test#0] Starting process: exit 2
+[2025-12-27T18:51:35.868Z] [WARN] [test#0] Died unexpectedly with exit code 2
+[2025-12-27T18:51:36.087Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:36.604Z] [WARN] [test#0] Died unexpectedly with exit code 1
+[2025-12-27T18:51:36.605Z] [ERROR] [test#0] Fatal: exceeded max retries (2)
+[2025-12-27T18:51:37.871Z] [INFO] [test#0] Starting process: exec sleep 10
+[2025-12-27T18:51:38.874Z] [INFO] [test#0] Process started successfully
+[2025-12-27T18:51:38.890Z] [INFO] [supervisor] Starting 0 services
+[2025-12-27T18:51:38.915Z] [INFO] [testservice#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:51:39.918Z] [INFO] [testservice#1] Process started successfully
+[2025-12-27T18:51:39.921Z] [INFO] [testservice#1] Stopping with signal SIGTERM
+[2025-12-27T18:51:39.921Z] [INFO] [testservice#1] Stopped with exit code 143
+[2025-12-27T18:51:39.922Z] [INFO] [testservice#1] Starting process: while true; do sleep 1; done
+[2025-12-27T18:51:40.925Z] [INFO] [testservice#1] Process started successfully
+[2025-12-27T18:51:40.929Z] [INFO] [supervisor] Reloading configuration
+[2025-12-27T18:51:40.930Z] [INFO] [supervisor] Config changes: removed=[] modified=[] added=[]

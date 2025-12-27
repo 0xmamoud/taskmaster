@@ -1,5 +1,6 @@
 import type { Subprocess } from "bun";
 import { type Service, ServiceState, RestartPolicy } from "./types";
+import { logger } from "./logger";
 
 export class ServiceInstance {
   private state: ServiceState = ServiceState.STOPPED;
@@ -12,6 +13,10 @@ export class ServiceInstance {
     public config: Service
   ) {}
 
+  get id(): string {
+    return `${this.serviceName}#${this.instanceId}`;
+  }
+
   async start(): Promise<void> {
     if (
       this.state !== ServiceState.STOPPED &&
@@ -21,6 +26,7 @@ export class ServiceInstance {
     }
 
     this.state = ServiceState.STARTING;
+    logger.info(this.id, `Starting process: ${this.config.cmd}`);
 
     this.processId = Bun.spawn(["sh", "-c", this.config.cmd], {
       cwd: this.config.workingdir,
@@ -38,6 +44,7 @@ export class ServiceInstance {
     }
 
     this.state = ServiceState.RUNNING;
+    logger.info(this.id, "Process started successfully");
 
     // Monitor exit for processes that started successfully
     this.processId.exited.then((exitCode) => {
@@ -58,6 +65,7 @@ export class ServiceInstance {
     }
 
     this.state = ServiceState.STOPPING;
+    logger.info(this.id, `Stopping with signal ${this.config.stopsignal}`);
 
     this.processId.kill(this.config.stopsignal);
 
@@ -68,6 +76,7 @@ export class ServiceInstance {
 
     let exitCode: number;
     if (result === undefined) {
+      logger.warn(this.id, "Stop timeout, sending SIGKILL");
       this.processId.kill("SIGKILL");
       exitCode = await this.processId.exited;
     } else {
@@ -76,6 +85,7 @@ export class ServiceInstance {
 
     this.state = ServiceState.STOPPED;
     this.processId = null;
+    logger.info(this.id, `Stopped with exit code ${exitCode}`);
 
     return exitCode;
   }
@@ -100,14 +110,18 @@ export class ServiceInstance {
       return;
     }
 
+    logger.warn(this.id, `Died unexpectedly with exit code ${exitCode}`);
+
     const shouldRestart = this.shouldRestart(exitCode);
 
     if (shouldRestart) {
       this.retryCount++;
       if (this.retryCount > this.config.startretries) {
         this.state = ServiceState.FATAL;
+        logger.error(this.id, `Fatal: exceeded max retries (${this.config.startretries})`);
       } else {
         this.state = ServiceState.BACKOFF;
+        logger.info(this.id, `Restarting (attempt ${this.retryCount}/${this.config.startretries})`);
         setTimeout(() => this.start(), 100);
       }
     } else {
