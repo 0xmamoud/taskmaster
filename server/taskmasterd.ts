@@ -2,6 +2,7 @@ import { parseConfig } from "./parsing";
 import type { Command } from "./types";
 import { Supervisor } from "./supervisor";
 import type { ServerWebSocket } from "bun";
+import { logger } from "./logger";
 
 const CONFIG_PATH = process.env.CONFIG_PATH || "./conf.json";
 
@@ -23,6 +24,44 @@ function sendError(ws: ServerWebSocket<unknown>, error: string): void {
     const supervisor = new Supervisor(config);
 
     await supervisor.start();
+
+    process.on("SIGHUP", async () => {
+      logger.info("taskmasterd", "Received SIGHUP, reloading configuration...");
+      try {
+        const newConfig = parseConfig(CONFIG_PATH);
+        const changes = await supervisor.reloadConfig(newConfig);
+        logger.info(
+          "taskmasterd",
+          `Config reloaded: added=${changes.added.length}, modified=${changes.modified.length}, removed=${changes.removed.length}`
+        );
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : String(error);
+        logger.error("taskmasterd", `Config reload failed: ${errorMessage}`);
+      }
+    });
+
+    // Handle SIGINT (Ctrl+C) for graceful shutdown
+    process.on("SIGINT", async () => {
+      logger.info(
+        "taskmasterd",
+        "Received SIGINT, shutting down gracefully..."
+      );
+      await supervisor.exit();
+      logger.info("taskmasterd", "All services stopped. Goodbye!");
+      process.exit(0);
+    });
+
+    // Handle SIGTERM for graceful shutdown
+    process.on("SIGTERM", async () => {
+      logger.info(
+        "taskmasterd",
+        "Received SIGTERM, shutting down gracefully..."
+      );
+      await supervisor.exit();
+      logger.info("taskmasterd", "All services stopped. Goodbye!");
+      process.exit(0);
+    });
 
     const server = Bun.serve({
       port: parseInt(process.env.PORT || "3333"),
