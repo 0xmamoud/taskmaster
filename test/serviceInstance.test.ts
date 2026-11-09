@@ -265,3 +265,25 @@ describe("ServiceInstance - Edge cases", () => {
     expect(instance.getState()).toBe(ServiceState.STOPPED);
   });
 });
+
+describe("ServiceInstance - Process group", () => {
+  test("should free the port of a child process so an immediate restart succeeds", async () => {
+    const port = 4789;
+    const config = createServiceConfig({
+      // Not exec'd: sh stays the parent of the server, like real service commands
+      cmd: `${process.execPath} -e 'Bun.serve({ port: ${port}, fetch: () => new Response() })'`,
+      autorestart: RestartPolicy.NEVER,
+      starttime: 1,
+    });
+    const instance = new ServiceInstance("test", 0, config);
+
+    await instance.start();
+    expect(instance.getState()).toBe(ServiceState.RUNNING);
+
+    await instance.stop();
+    await instance.start();
+    expect(instance.getState()).toBe(ServiceState.RUNNING);
+
+    await instance.stop();
+  });
+});

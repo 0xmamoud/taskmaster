@@ -11,6 +11,39 @@ function closeLog(fd: number | null): void {
   if (fd !== null) closeSync(fd);
 }
 
+const GROUP_EXIT_POLL_MS = 50;
+
+function isNoSuchProcess(error: unknown): boolean {
+  return (error as NodeJS.ErrnoException).code === "ESRCH";
+}
+
+function signalGroup(pgid: number, signal: NodeJS.Signals): void {
+  try {
+    process.kill(-pgid, signal);
+  } catch (error) {
+    if (!isNoSuchProcess(error)) throw error;
+  }
+}
+
+function isGroupAlive(pgid: number): boolean {
+  try {
+    process.kill(-pgid, 0);
+    return true;
+  } catch (error) {
+    if (isNoSuchProcess(error)) return false;
+    throw error;
+  }
+}
+
+async function waitForGroupExit(pgid: number, timeoutMs: number): Promise<boolean> {
+  const deadline = Date.now() + timeoutMs;
+  while (isGroupAlive(pgid)) {
+    if (Date.now() >= deadline) return false;
+    await Bun.sleep(GROUP_EXIT_POLL_MS);
+  }
+  return true;
+}
+
 export class ServiceInstance {
   private state: ServiceState = ServiceState.STOPPED;
   private processId: Subprocess | null = null;
@@ -48,6 +81,8 @@ export class ServiceInstance {
         env: this.config.env,
         stdout: stdoutFd ?? "ignore",
         stderr: stderrFd ?? "ignore",
+        // Own process group, so stop() can signal the command's children too
+        detached: true,
       });
     } finally {
       // The child holds its own copies of the descriptors
@@ -89,21 +124,18 @@ export class ServiceInstance {
     this.state = ServiceState.STOPPING;
     logger.info(this.id, `Stopping with signal ${this.config.stopsignal}`);
 
-    this.processId.kill(this.config.stopsignal);
+    // The shell is the group leader, so its PID is the group ID
+    const pgid = this.processId.pid;
+    signalGroup(pgid, this.config.stopsignal);
 
-    const stopTimeout = Bun.sleep(this.config.stoptime * 1000);
-    const processExited = this.processId.exited;
-
-    const result = await Promise.race([stopTimeout, processExited]);
-
-    let exitCode: number;
-    if (result === undefined) {
+    const groupExited = await waitForGroupExit(pgid, this.config.stoptime * 1000);
+    if (!groupExited) {
       logger.warn(this.id, "Stop timeout, sending SIGKILL");
-      this.processId.kill("SIGKILL");
-      exitCode = await this.processId.exited;
-    } else {
-      exitCode = result;
+      signalGroup(pgid, "SIGKILL");
+      await waitForGroupExit(pgid, Number.POSITIVE_INFINITY);
     }
+
+    const exitCode = await this.processId.exited;
 
     this.state = ServiceState.STOPPED;
     this.processId = null;
