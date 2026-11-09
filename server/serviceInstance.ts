@@ -1,6 +1,15 @@
 import type { Subprocess } from "bun";
+import { closeSync, openSync } from "node:fs";
 import { type Service, ServiceState, RestartPolicy } from "./types";
 import { logger } from "./logger";
+
+function openLogForAppend(path: string | null | undefined): number | null {
+  return path ? openSync(path, "a") : null;
+}
+
+function closeLog(fd: number | null): void {
+  if (fd !== null) closeSync(fd);
+}
 
 export class ServiceInstance {
   private state: ServiceState = ServiceState.STOPPED;
@@ -30,12 +39,21 @@ export class ServiceInstance {
 
     const cmd = `umask ${this.config.umask} && ${this.config.cmd}`;
 
-    this.processId = Bun.spawn(["sh", "-c", cmd], {
-      cwd: this.config.workingdir,
-      env: this.config.env,
-      stdout: this.config.stdout ? Bun.file(this.config.stdout) : "ignore",
-      stderr: this.config.stderr ? Bun.file(this.config.stderr) : "ignore",
-    });
+    const stdoutFd = openLogForAppend(this.config.stdout);
+    const stderrFd = openLogForAppend(this.config.stderr);
+
+    try {
+      this.processId = Bun.spawn(["sh", "-c", cmd], {
+        cwd: this.config.workingdir,
+        env: this.config.env,
+        stdout: stdoutFd ?? "ignore",
+        stderr: stderrFd ?? "ignore",
+      });
+    } finally {
+      // The child holds its own copies of the descriptors
+      closeLog(stdoutFd);
+      closeLog(stderrFd);
+    }
 
     const startTimeout = Bun.sleep(this.config.starttime * 1000);
     const processExited = this.processId.exited;
